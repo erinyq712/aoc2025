@@ -1,5 +1,3 @@
-import static java.lang.Math.abs;
-
 void main(String[] args) {
     var input = "input.txt";
     // input = "sample.txt";
@@ -31,13 +29,13 @@ enum Direction {
         }
         throw new IllegalArgumentException("No direction found for " + value);
     }
-};
+}
 
 private void exercise1(List<String> lines) {
+
     long start = 50;
     long counter = 0;
-    for(int i = 0; i < lines.size(); i++) {
-        var line = lines.get(i);
+    for (String line : lines) {
         Direction direction = Direction.get(line.substring(0, 1));
         var change = Long.parseLong(line.substring(1));
         if (direction == Direction.LEFT) {
@@ -59,27 +57,26 @@ private void exercise1(List<String> lines) {
 private void exercise2(List<String> lines) {
     long start = 50;
     long counter = 0;
-    long previous = 0;
-    for(int i = 0; i < lines.size(); i++) {
-        var line = lines.get(i);
+    long previous;
+    for (String line : lines) {
         Direction direction = Direction.get(line.substring(0, 1));
         var change = Long.parseLong(line.substring(1));
-        var rotations = change/100; // effective change
-        change = change - rotations*100;
+        var rotations = change / 100; // effective change
+        change = change - rotations * 100;
         counter += rotations;
         previous = start;
         if (direction == Direction.LEFT) {
             var delta = start - change;
             start = delta < 0 ? (delta + 100) % 100 : delta;
             if ((delta < 0 && previous != 0) || start == 0) {
-                System.out.println(String.format("%s: %d -> %d", line, previous, start));
+                System.out.printf("%s: %d -> %d%n", line, previous, start);
                 counter++;
             }
         } else {
             var delta = start + change;
             start = delta % 100;
             if (delta > 99 || start == 0) {
-                System.out.println(String.format("%s: %d -> %d", line, previous, start));
+                System.out.printf("%s: %d -> %d%n", line, previous, start);
                 counter++;
             }
         }
