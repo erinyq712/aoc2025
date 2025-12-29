@@ -38,10 +38,10 @@ The joltage output for the bank is still the number formed by the digits of the 
 
 Consider again the example from before:
 
-987654321111111
-811111111111119
-234234234234278
-818181911112111
+        987654321111111
+        811111111111119
+        234234234234278
+        818181911112111
 Now, the joltages are much larger:
 
 In 987654321111111, the largest joltage can be found by turning on everything except some 1s at the end to produce 987654321111.
