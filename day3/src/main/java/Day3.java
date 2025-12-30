@@ -1,6 +1,6 @@
 void main(String[] args) {
     var input = "input.txt";
-    input = "sample.txt";
+    // input = "sample.txt";
     if (args.length > 0) {
         input = args[0];
     }
