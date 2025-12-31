@@ -1,4 +1,5 @@
---- Day 1: Secret Entrance ---
+# Day 1: Secret Entrance
+
 The Elves have good news and bad news.
 
 The good news is that they've discovered project management! This has given them the tools they need to prevent their
