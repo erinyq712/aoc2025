@@ -26,11 +26,13 @@ public class Input {
         var current = ranges.get(pos);
         while (pos < ranges.size()-1) {
             var next = ranges.get(pos+1);
-            if (current.overlaps(next)) {
-                current = current.merge(next);
-            } else {
-                mergedRanges.add(current);
-                current = next;
+            if (current != null) {
+                if (current.overlaps(next)) {
+                    current = current.merge(next);
+                } else {
+                    mergedRanges.add(current);
+                    current = next;
+                }
             }
             pos++;
         }
