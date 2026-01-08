@@ -1,5 +1,5 @@
 import se.nyquist.day8.Coordinate;
-import se.nyquist.day8.Point;
+import se.nyquist.day8.Line;
 
 void main(String[] args) {
     var input = "input.txt";
@@ -22,7 +22,7 @@ private void exercise2(List<String> lines) {
     var coordinates = lines.stream().map(Coordinate::new).toList();
     var distances = IntStream.range(0, coordinates.size()).boxed().flatMap(i ->
                     IntStream.range(i+1, coordinates.size()).mapToObj(j ->
-                            Map.entry(new Point(coordinates.get(i), coordinates.get(j)), coordinates.get(i).distance(coordinates.get(j)))))
+                            Map.entry(new Line(coordinates.get(i), coordinates.get(j)), coordinates.get(i).distance(coordinates.get(j)))))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     var pairs = distances.entrySet().stream()
             .sorted(Map.Entry.comparingByValue())
@@ -53,7 +53,7 @@ private void exercise1(List<String> lines) {
     var coordinates = lines.stream().map(Coordinate::new).toList();
     var distances = IntStream.range(0, coordinates.size()).boxed().flatMap(i -> 
         IntStream.range(i+1, coordinates.size()).mapToObj(j ->
-                Map.entry(new Point(coordinates.get(i), coordinates.get(j)), coordinates.get(i).distance(coordinates.get(j)))))
+                Map.entry(new Line(coordinates.get(i), coordinates.get(j)), coordinates.get(i).distance(coordinates.get(j)))))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     var pairs = distances.entrySet().stream()
             .sorted(Map.Entry.comparingByValue())
